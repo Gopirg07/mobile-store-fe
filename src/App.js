@@ -14,8 +14,9 @@ import Home from "./Components/Home/Home";
 import Mobiles from "./Components/Mobiles/Mobiles";
 import Buypage from "./Components/Mobiles/Buypage";
 import Addmobile from "./Components/Mobiles/Addmobile";
+import Updatepage, { EditMobile } from "./Components/Mobiles/Updatepage";
 
-export const url="http://localhost:8000" 
+export const url="https://mobile-store-be.onrender.com" 
 
 
 function App() {
@@ -37,11 +38,11 @@ function App() {
         <Route path="/reset-password/:id" element={<ResetPassword/>} />
 
         <Route path="/home" element={<Home mode={mode} setMode={setMode}/>}/> 
-         <Route path="/mobiles" element={<Mobiles mode={mode} setMode={setMode}/>} />  
-         <Route path="/mobiles/buy" element={<Buypage mode={mode} setMode={setMode}/>} />  
-         <Route path="/AddMobile" element={<Addmobile mode={mode} setMode={setMode}/>} />  
-        {/* <Route path="/Movie/:abc" element={<MovieDetail movielists={movieList}/>} /> 
-      <Route path="/Movie/edit/:abc" element={<EditMovie/>} />    */}
+        <Route path="/mobiles" element={<Mobiles mode={mode} setMode={setMode}/>} />  
+        <Route path="/mobiles/buy" element={<Buypage mode={mode} setMode={setMode}/>} />  
+        <Route path="/AddMobile" element={<Addmobile mode={mode} setMode={setMode}/>} />  
+        <Route path="/update/:id" element={<EditMobile mode={mode} setMode={setMode}/>}  />    
+        {/* <Route path="/Movie/:abc" element={<MovieDetail movielists={movieList}/>} /> */}
       <Route path="/*" element={<Navigate to="/signin"/>}/> 
       </Routes> 
         </div> 

@@ -1,37 +1,30 @@
 import React from "react";
 import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css"; 
-import Apple from "../../Images/company icons/Apple-logo.png";
-import mi from "../../Images/company icons/mi logo.png";
-import oneplus from "../../Images/company icons/one-plus-logo.png";
-import oppo from "../../Images/company icons/oppo-logo.png";
-import realme from "../../Images/company icons/realme-logo-1.png";
-import samsung from "../../Images/company icons/samsung-logo.png";
-import tecno from "../../Images/company icons/tecno-brand-logo.png";
-import Vivo from "../../Images/company icons/Vivo-logo.png";
-import Asus from "../../Images/company icons/Logo-0-0011-Group-15.png";
-import Nokia from "../../Images/company icons/Logo-0-0027-Nokia.png";
-import Lenovo from "../../Images/company icons/Logo-0-0034-Lenovo.png";
-import moto from "../../Images/company icons/moto-logo.png";
+import "react-multi-carousel/lib/styles.css";  
+
+
+
 export default function CompanyCarousel() {
   let data = [
-    Apple,
-    mi,
-    oneplus,
-    oppo,
-    realme,
-    samsung,
-    tecno,
-    Vivo,
-    Asus,
-    Nokia,
-    Lenovo,
-    moto,
-    Apple,
-    oneplus, 
-    oppo,
-    realme,
+    "https://img-prd-pim.poorvika.com/cdn-cgi/image/width=70,height=70,quality=75/brand/Apple-logo.png" ,
+    "https://img-prd-pim.poorvika.com/cdn-cgi/image/width=70,height=70,quality=75/brand/Logo-0-0032-samsung.png",
+    "https://img-prd-pim.poorvika.com/cdn-cgi/image/width=70,height=70,quality=75/brand/one-plus-logo.png",
+    "https://img-prd-pim.poorvika.com/cdn-cgi/image/width=70,height=70,quality=75/brand/mi.png",
+    "https://img-prd-pim.poorvika.com/cdn-cgi/image/width=70,height=70,quality=75/brand/Logo-0-0031-oppo.png",
+    "https://img-prd-pim.poorvika.com/cdn-cgi/image/width=70,height=70,quality=75/brand/tecno-brand-logo.png",
+    "https://img-prd-pim.poorvika.com/cdn-cgi/image/width=70,height=70,quality=75/brand/realme-logo-1.png",
+    "https://img-prd-pim.poorvika.com/cdn-cgi/image/width=70,height=70,quality=75/brand/moto-logo.png",
+    "https://img-prd-pim.poorvika.com/cdn-cgi/image/width=70,height=70,quality=75/brand/Logo-0-0027-Nokia.png",
+    "https://img-prd-pim.poorvika.com/cdn-cgi/image/width=70,height=70,quality=75/brand/Logo-0-0026-Vivo.png",
+    "https://img-prd-pim.poorvika.com/cdn-cgi/image/width=70,height=70,quality=75/brand/Logo-0-0011-Group-15.png",
+    "https://img-prd-pim.poorvika.com/cdn-cgi/image/width=70,height=70,quality=75/brand/Apple-logo.png" ,
+    "https://img-prd-pim.poorvika.com/cdn-cgi/image/width=70,height=70,quality=75/brand/Logo-0-0032-samsung.png",
+    "https://img-prd-pim.poorvika.com/cdn-cgi/image/width=70,height=70,quality=75/brand/one-plus-logo.png",
+    "https://img-prd-pim.poorvika.com/cdn-cgi/image/width=70,height=70,quality=75/brand/mi.png",
+    "https://img-prd-pim.poorvika.com/cdn-cgi/image/width=70,height=70,quality=75/brand/Logo-0-0031-oppo.png",
+
   ];
+
 
   const responsive = {
     superLargeDesktop: {
@@ -58,7 +51,7 @@ export default function CompanyCarousel() {
       <Carousel responsive={responsive} className="logos-div"> 
           {data.map((data, idx) => {
             return (
-              <div style={{ textAlign: "center" }}>
+              <div key={idx} style={{ textAlign: "center" }}>
                 <img
                   style={{ width: "60px", height: "60px" }}
                   variant="top"

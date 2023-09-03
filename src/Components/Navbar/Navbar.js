@@ -12,7 +12,6 @@ import Brightness3Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
 import logo from "../../Images/Poorvika-english-logo.svg";
 
-
 export default function Navbar({ mode, setMode }) {
   const navigate = useNavigate();
 
@@ -25,39 +24,36 @@ export default function Navbar({ mode, setMode }) {
   }
   return (
     <div className="Navbar">
-      <AppBar sx={{backgroundColor:mode? "#ff9c07" : ""}}>
+      <AppBar sx={{ backgroundColor: mode ? "#ff9c07" : "" }}>
         <Container maxWidth="xl">
           <Toolbar disableGutters>
-            <Button 
+            <Button
               component="a"
               sx={{
                 mr: 2,
                 ml: 0,
-                display: { md: "flex" },  
-                
+                display: { md: "flex" },
               }}
               onClick={() => navigate("/home")}
             >
-              <img src={logo} alt={logo}  style={{width:"130px"}}/>
+              <img src={logo} alt={logo} style={{ width: "130px" }} />
             </Button>
             <Box sx={{ flexGrow: 1, display: "flex", gap: "10px" }}>
               <Button
                 color="inherit"
                 // variant="contained"
-                 onClick={(mode) => navigate("/mobiles")}
+                onClick={(mode) => navigate("/mobiles")}
               >
                 Mobiles
               </Button>
 
-              {/* {role==="admin" ?  */}
-              <Button color="inherit" onClick={() => navigate("/AddMobile")}>
+              {role === "admin" ? (
+                <Button color="inherit" onClick={() => navigate("/AddMobile")}>
                   Add Mobile
                 </Button>
-                {/* :"" }  */}
-
-               {/*  {role==="admin" ? <Button color="inherit" onClick={() => navigate("/Users")}>
-                  Users
-                </Button>:"" }  */}
+              ) : (
+                ""
+              )}
             </Box>
 
             <Button
@@ -68,21 +64,25 @@ export default function Navbar({ mode, setMode }) {
               {mode ? "light" : "dark"} Mode
             </Button>
 
-            <Tooltip title="Logout"> 
-                <IconButton color="inherit" style={{ marginLeft: 3, padding:"0px ! important" }} onClick={() => logout()}>
-                  <LogoutIcon fontSize="medium" sx={{ color: "white " }} />
-                  <p
-                    style={{
-                      color: "white",
-                      fontFamily: "Roboto",
-                      fontWeight: "500",
-                      margin: "0px 0px 0px 0px",
-                      fontSize: "15px",
-                    }}
-                  >
-                    Logout
-                  </p>
-                </IconButton> 
+            <Tooltip title="Logout">
+              <IconButton
+                color="inherit"
+                style={{ marginLeft: 3, padding: "0px ! important" }}
+                onClick={() => logout()}
+              >
+                <LogoutIcon fontSize="medium" sx={{ color: "white " }} />
+                <p
+                  style={{
+                    color: "white",
+                    fontFamily: "Roboto",
+                    fontWeight: "500",
+                    margin: "0px 0px 0px 0px",
+                    fontSize: "15px",
+                  }}
+                >
+                  Logout
+                </p>
+              </IconButton>
             </Tooltip>
           </Toolbar>
         </Container>

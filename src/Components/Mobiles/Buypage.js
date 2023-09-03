@@ -27,7 +27,7 @@ const mobileValidationSchema = yup.object({
 
 export default function Buypage({ mode, setMode }) {
   const navigate = useNavigate();
-  let [ purchased, setPurchased ] = useState(true);
+  let [purchased, setPurchased] = useState(false);
   console.log(purchased);
 
   const { handleSubmit, values, handleChange, handleBlur, touched, errors } =
@@ -43,7 +43,11 @@ export default function Buypage({ mode, setMode }) {
 
       onSubmit: (buy) => {
         console.log("Form Values Are", buy);
-        // buy(buy);
+        setPurchased(!purchased);
+        
+        setTimeout(()=>{
+          navigate("/mobiles");
+        },3000)
       },
     });
 
@@ -66,7 +70,7 @@ export default function Buypage({ mode, setMode }) {
       <div className="buy-div-outer">
         {purchased ? (
           <div className="buy-pur-div">
-            <h3 className="buy-pur-title">Mobile Ordered Successfully 🎉✨</h3>
+            <h3 className="buy-pur-title">Mobile Ordered Successfully 🎉✨ <br/> Redirecting To Mobiles Page</h3> 
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="buy-div">

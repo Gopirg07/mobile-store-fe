@@ -1,26 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
-import { Button, TextField } from "@mui/material";
-
+import { TextField } from "@mui/material";
+import { Button } from "react-bootstrap";
+import { useNavigate, useParams } from "react-router-dom";
 import { useFormik } from "formik";
 import * as yup from "yup";
+import axios from "axios";
+import { url as urll } from "../../App";
 import { toast } from "react-toastify";
-
-import Apple_iphone_14_pro from "../../Images/phone images/Apple-iphone-14-pro-max-128gb-Deep-Purple-Front-Back-View.png";
-import Samsung_galaxy_s23_ultra from "../../Images/phone images/Samsung-galaxy-s23-ultra-5g-green-512gb-12gb-ram-Front-Back.png";
-import apple_iphone_14_yellow from "../../Images/phone images/apple-iphone-14-yellow-128gb-front-back-view.png";
-import oneplus_nord from "../../Images/phone images/oneplus-nord-ce-3-5g-gray-shimmer-256gb-8gb-ram-front-view.png";
-import Realme_11_pro from "../../Images/phone images/Realme-11-pro-plus-5g-astral-black-256gb-12gb-ram-Front-Back-View.png";
-import Redmi_note_12_5g from "../../Images/phone images/Redmi-note-12-5g-frosted-green-128gb-6gb-ram-Front-Back-View.png";
-import Samsung_galaxy_a54_5g from "../../Images/phone images/Samsung-galaxy-a54-5g-awesome-lime-128gb-8gb-ram-Front-Back.png";
-import Vivo_y100a_5g_metal from "../../Images/phone images/Vivo-y100a-5g-metal-black-128gb-8gb-ram-Front-Back-View.png";
-import oppo_reno_10_pro from "../../Images/phone images/oppo-reno-10-pro-plus-5g-glossy-purple-256gb-12gb-ram-front-and-back-view.png";
-import tecno_camon_20_pro from "../../Images/phone images/tecno-camon-20-pro-5g-serenity-blue-128gb-8gb-ram-front-and-back-view.png";
-import { useNavigate } from "react-router-dom";
-import axios from "axios"; 
-import { url  as urll} from "../../App";
-
 
 const mobileValidationSchema = yup.object({
   url: yup
@@ -45,18 +33,53 @@ const mobileValidationSchema = yup.object({
   discount: yup.string().required("Discount price field cant be empty"),
 });
 
-export default function Addmobile({ mode, setMode }) {
-  const navigate = useNavigate(); 
+export function EditMobile({ mode, setMode }) {
+  const { id } = useParams();
+
+
+  const [mobile, setMobile] = useState(null);
+
+  const getData = async () => {
+    try {
+      let res = await axios.get(`${urll}/mobiles/getMobile/${id}`);
+      console.log(res.data.data[0]);
+      setMobile(res.data.data[0]);
+      toast.success(res.data.message);
+      // navigate("/mobiles");
+    } catch (err) {
+      toast.error(err.response.data.message);
+    }
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  return (
+    <div className="Buypage">
+      <Navbar mode={mode} setMode={setMode} />
+      {mobile ? <Updatepage mobile={mobile} mode={mode} setMode={setMode} /> : ""}
+      <Footer mode={mode} />
+    </div>
+  );
+}
+
+export default function Updatepage({ mobile, mode, setMode }) {
+  let [past, setPast] = useState(mobile);
+  console.log("past", past.name);
+
+
+  const navigate = useNavigate();
 
   const { handleSubmit, values, handleChange, handleBlur, touched, errors } =
     useFormik({
       initialValues: {
-        url: "",
-        name: "",
-        varient: "",
-        price: "",
-        oprice: "",
-        discount: "",
+        url: past.url,
+        name: past.name,
+        varient: past.varient,
+        price: past.price,
+        oprice: past.oprice,
+        discount: past.discount,
       },
       validationSchema: mobileValidationSchema,
       onSubmit: (newMobile) => {
@@ -80,11 +103,11 @@ export default function Addmobile({ mode, setMode }) {
   };
 
   return (
-    <div className="Addpage">
+    <div className="Buypage">
       <Navbar mode={mode} setMode={setMode} />
-      <form onSubmit={handleSubmit} className="buy-div-outer">
-        <div className="buy-div">
-          <h1 className="buy-title">Add Mobile</h1>
+      <div className="buy-div-outer">
+        <form onSubmit={handleSubmit} className="buy-div">
+          <h1 className="buy-title">Update Mobile</h1>
           <TextField
             id="outlined-basic"
             label="Enter Mobile Photo Url"
@@ -161,10 +184,10 @@ export default function Addmobile({ mode, setMode }) {
             variant="contained"
             type="submit"
           >
-            Add Mobile
+            Update Mobile
           </Button>
-        </div>
-      </form>
+        </form>
+      </div>
       <Footer mode={mode} />
     </div>
   );
