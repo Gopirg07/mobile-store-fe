@@ -10,7 +10,7 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import MovieCreationRoundedIcon from "@mui/icons-material/MovieCreationRounded";
 import Brightness3Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
-import logo from "../../Images/Poorvika-english-logo.svg";
+import logo from "../../Images/Boorvika-png-logo.png";
 
 export default function Navbar({ mode, setMode }) {
   const navigate = useNavigate();
