@@ -95,11 +95,11 @@ export default function Mobiles({ mode, setMode }) {
                   {data.varient}
                 </Card.Text>
 
-                <Card.Text className="main-cardprice">{data.price}</Card.Text>
+                <Card.Text className="main-cardprice">₹ {data.price}</Card.Text>
                 <div className="main-oprice-per">
                   {data.price !== data.oprice ? (
                     <Card.Text className="main-cardoprice">
-                      {data.oprice}
+                      ₹ {data.oprice}
                     </Card.Text>
                   ) : (
                     ""
@@ -113,7 +113,7 @@ export default function Mobiles({ mode, setMode }) {
                     className="buy-btn"
                     style={{ backgroundColor: mode ? "#ff9c07" : "" }}
                     variant="contained"
-                    onClick={() => navigate("/mobiles/buy")}
+                    onClick={() => navigate(`/mobiles/${data._id}`)}
                   >
                     Buy
                   </Button>

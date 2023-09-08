@@ -117,11 +117,11 @@ export default function CardCarousels({ mode }) {
                         {data.varient}
                       </Card.Text>
 
-                      <Card.Text className="cardprice">{data.price}</Card.Text>
+                      <Card.Text className="cardprice">₹ {data.price}</Card.Text>
                       <div className="oprice-per">
                         {data.price !== data.oprice ? (
                           <Card.Text className="cardoprice">
-                            {data.oprice}
+                            ₹ {data.oprice}
                           </Card.Text>
                         ) : (
                           ""
