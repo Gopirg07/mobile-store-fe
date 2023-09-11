@@ -28,7 +28,7 @@ export default function Signin() {
   const { values, handleChange, handleBlur, handleSubmit, errors, touched } =
     useFormik({
       initialValues: {
-        email: "gopi.rg03@gmail.com",
+        email: "gopi33@gmail.com",
         password: "gopi@321",
       },
       validationSchema: LoginSchemaValidation,
@@ -104,6 +104,11 @@ export default function Signin() {
             <div className="checkbox-div">
               <Checkbox onClick={() => setShow(!show)} />
               <p>Show Password</p>
+            </div>
+            <div className="creds">
+            <h6>Admin Credentials : </h6>
+            <p>email : gopi.rg03@gmail.com</p>
+            <p>password : gopi@321</p>
             </div>
             <Button
               style={{

@@ -67,6 +67,7 @@ export function EditMobile({ mode, setMode }) {
 export default function Updatepage({ mobile, mode, setMode }) {
   let [past, setPast] = useState(mobile);
   console.log("past", past.name);
+  const { id } = useParams();
 
 
   const navigate = useNavigate();
@@ -93,7 +94,7 @@ export default function Updatepage({ mobile, mode, setMode }) {
     let payload = { url, name, varient, price, oprice, discount };
     console.log("this is PAYLOAD", payload);
     try {
-      let res = await axios.post(`${urll}/mobiles/addMobile`, payload);
+      let res = await axios.put(`${urll}/mobiles/updateMobile/${id}`, payload);
       console.log(res);
       toast.success(res.data.message);
       navigate("/mobiles");

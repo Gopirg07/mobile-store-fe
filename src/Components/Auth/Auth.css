@@ -33,6 +33,17 @@
   font-size: 15px;
 }
 
+.creds{
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.creds>p{
+  margin: 0px
+}
+
 .signup-p {
   letter-spacing: 1px;
   text-align: center;
